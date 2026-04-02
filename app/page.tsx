@@ -156,21 +156,32 @@ function CancelIcon(props: { className?: string }) {
 }
 
 function AnimatedSectionTitle({ text }: { text: string }) {
-    const totalChars = Math.max(text.length - 1, 1);
+    const words = text.trim().split(/\s+/);
+    const totalChars = Math.max(Array.from(text.replace(/\s+/g, "")).length - 1, 1);
+    let charIndex = 0;
 
     return (
         <h2 className={styles.animatedTitle} data-reveal-title aria-label={text}>
-            {Array.from(text).map((char, index) => (
-                <span
-                    key={`${char}-${index}`}
-                    className={styles.animatedChar}
-                    style={{
-                        ["--char-index" as string]: index,
-                        ["--char-total" as string]: totalChars,
-                    }}
-                    aria-hidden="true"
-                >
-                    {char === " " ? "\u00A0" : char}
+            {words.map((word, wordIndex) => (
+                <span key={`${word}-${wordIndex}`} className={styles.animatedWord} aria-hidden="true">
+                    {Array.from(word).map((char, localIndex) => {
+                        const currentIndex = charIndex;
+                        charIndex += 1;
+
+                        return (
+                            <span
+                                key={`${word}-${wordIndex}-${char}-${localIndex}`}
+                                className={styles.animatedChar}
+                                style={{
+                                    ["--char-index" as string]: currentIndex,
+                                    ["--char-total" as string]: totalChars,
+                                }}
+                            >
+                                {char}
+                            </span>
+                        );
+                    })}
+                    {wordIndex < words.length - 1 ? <span className={styles.animatedSpace}> </span> : null}
                 </span>
             ))}
         </h2>
@@ -230,7 +241,7 @@ export default function Home() {
             <main className={styles.main}>
                 <section className={styles.sectionPad}>
                     <div className={`${styles.desktopFrame} ${styles.heroGrid}`}>
-                        <div>
+                        <div className={styles.heroIntro}>
                             <div className={styles.badge}>NOUVELLE COHORTE 2026</div>
                             <h1 className={styles.heroTitle}>
                                 Mon Idée, <span>Mon Entreprise !</span>
@@ -238,15 +249,6 @@ export default function Home() {
                             <p className={styles.heroText}>
                                 Transforme une idée floue en un projet structuré, finançable et prêt à être lancé en <strong>10 semaines</strong>.
                             </p>
-                            <div className={styles.heroActions}>
-                                <a className={styles.ctaButton} href={FORM_LINK} target="_blank" rel="noreferrer">
-                                    Rejoindre le programme
-                                </a>
-                                <div className={styles.placesChip}>
-                                    <GroupsIcon className={styles.iconGlyph} />
-                                    <span>Places limitées (15)</span>
-                                </div>
-                            </div>
                         </div>
 
                         <div className={styles.heroVisualWrap}>
@@ -256,6 +258,18 @@ export default function Home() {
                             <div className={styles.inscriptionCard}>
                                 <p>Inscription</p>
                                 <strong>15 mars au 18 mai 2026</strong>
+                            </div>
+                        </div>
+
+                        <div className={styles.heroActionsSlot}>
+                            <div className={styles.heroActions}>
+                                <a className={styles.ctaButton} href={FORM_LINK} target="_blank" rel="noreferrer">
+                                    Rejoindre le programme
+                                </a>
+                                <div className={styles.placesChip}>
+                                    <GroupsIcon className={styles.iconGlyph} />
+                                    <span>Places limitées (15)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
