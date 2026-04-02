@@ -17,8 +17,12 @@
 }
 
 @media (min-width: 1200px) {
+  .page {
+    font-size: 0.9375rem;
+  }
+
   .desktopFrame {
-    width: min(1600px, calc(100% - 340px));
+    width: min(1600px, calc(100% - 280px));
   }
 }
 
