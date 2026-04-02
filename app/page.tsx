@@ -382,6 +382,7 @@ export default function Home() {
                                     <span>Réseau d&apos;entrepreneurs locaux</span>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </section>
@@ -404,6 +405,12 @@ export default function Home() {
                                     <p>{text}</p>
                                 </article>
                             ))}
+                             <div className={styles.heroActions}>
+                                <a className={styles.ctaButton} href={FORM_LINK} target="_blank" rel="noreferrer">
+                                    Rejoindre le programme
+                                </a>
+                    
+                            </div>
                         </div>
                     </div>
                 </section>
