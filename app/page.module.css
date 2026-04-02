@@ -4,6 +4,13 @@
   font-family: var(--font-body);
 }
 
+.headerLogo {
+  height: 5.35rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .desktopFrame {
   width: min(1280px, calc(100% - 2rem));
   margin-inline: auto;
@@ -39,12 +46,6 @@
   gap: 0.9rem;
 }
 
-.logo {
-  height: 5.6rem;
-  width: auto;
-  object-fit: contain;
-}
-
 .logoDivider {
   width: 1px;
   height: 1.7rem;
@@ -61,6 +62,14 @@
   color: #4f4633;
   text-decoration: none;
   font-weight: 600;
+}
+
+.iconGlyph {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: inline-block;
+  color: currentColor;
 }
 
 .ctaButton {
@@ -195,7 +204,7 @@
   padding: 0.9rem 1rem;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
   display: inline-block;
-  animation: softPulse 3.2s ease-in-out infinite;
+  animation: softPulse 3.2s ease-in-out infinite, pulsePop 0.8s ease-in-out infinite;
 }
 
 .inscriptionCard p {
@@ -892,6 +901,16 @@
   }
 }
 
+@keyframes pulsePop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
 @keyframes cardLiftIn {
   from {
     opacity: 0;
@@ -985,6 +1004,12 @@
 .footerBottom div {
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 859px) {
+  .main {
+    padding-top: 5.5rem;
+  }
 }
 
 @media (min-width: 860px) {

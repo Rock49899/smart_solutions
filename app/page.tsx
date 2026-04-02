@@ -1,6 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
+import type { ReactNode } from "react";
 import { useEffect } from "react";
 import styles from "./page.module.css";
 
@@ -16,6 +17,143 @@ const modules = [
     ["06", "Pitch", "L'art de présenter son projet avec impact et assurance."],
     ["07", "Lancement", "Exécution opérationnelle et premiers pas officiels."],
 ] as const;
+
+function Icon({
+    title,
+    className,
+    children,
+}: {
+    title: string;
+    className?: string;
+    children: ReactNode;
+}) {
+    return (
+        <svg
+            className={className}
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label={title}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <title>{title}</title>
+            {children}
+        </svg>
+    );
+}
+
+function GroupsIcon(props: { className?: string }) {
+    return (
+        <Icon title="Groupes" {...props}>
+            <circle cx="9" cy="8" r="3" />
+            <circle cx="17" cy="9" r="2.4" />
+            <path d="M4.5 19a5.5 5.5 0 0 1 11 0" />
+            <path d="M12.5 18.8a4.5 4.5 0 0 1 7 .2" />
+        </Icon>
+    );
+}
+
+function CalendarIcon(props: { className?: string }) {
+    return (
+        <Icon title="Calendrier" {...props}>
+            <rect x="4" y="5" width="16" height="15" rx="2" />
+            <path d="M8 3v4" />
+            <path d="M16 3v4" />
+            <path d="M4 9h16" />
+            <path d="M8 13h3" />
+        </Icon>
+    );
+}
+
+function TimerIcon(props: { className?: string }) {
+    return (
+        <Icon title="Minuteur" {...props}>
+            <circle cx="12" cy="13" r="7" />
+            <path d="M9 3h6" />
+            <path d="M12 13l3-2" />
+        </Icon>
+    );
+}
+
+function UsersIcon(props: { className?: string }) {
+    return (
+        <Icon title="Utilisateurs" {...props}>
+            <circle cx="9" cy="8" r="3" />
+            <circle cx="17" cy="9.5" r="2.4" />
+            <path d="M4.5 20a5.5 5.5 0 0 1 9 0" />
+            <path d="M13.5 19.6a4.5 4.5 0 0 1 6 0.4" />
+        </Icon>
+    );
+}
+
+function BrainIcon(props: { className?: string }) {
+    return (
+        <Icon title="Idées" {...props}>
+            <path d="M9 5.5a3 3 0 0 0-3 3V9a2.8 2.8 0 0 0 0 5.6 3 3 0 0 0 3 3h1" />
+            <path d="M15 5.5a3 3 0 0 1 3 3V9a2.8 2.8 0 0 1 0 5.6 3 3 0 0 1-3 3h-1" />
+            <path d="M10 7.5V17" />
+            <path d="M14 7.5V17" />
+        </Icon>
+    );
+}
+
+function BanknoteIcon(props: { className?: string }) {
+    return (
+        <Icon title="Paiements" {...props}>
+            <rect x="4" y="7" width="16" height="10" rx="2" />
+            <circle cx="12" cy="12" r="2.2" />
+            <path d="M7 9.5h0.01" />
+            <path d="M17 14.5h0.01" />
+        </Icon>
+    );
+}
+
+function BuildingIcon(props: { className?: string }) {
+    return (
+        <Icon title="Bâtiment" {...props}>
+            <path d="M5 20V6l7-3 7 3v14" />
+            <path d="M9 20v-4h6v4" />
+            <path d="M9 10h0.01" />
+            <path d="M9 13h0.01" />
+            <path d="M15 10h0.01" />
+            <path d="M15 13h0.01" />
+        </Icon>
+    );
+}
+
+function ArchitectureIcon(props: { className?: string }) {
+    return (
+        <Icon title="Architecture" {...props}>
+            <path d="M4 20h16" />
+            <path d="M7 20V8l5-4 5 4v12" />
+            <path d="M10 20v-6h4v6" />
+            <path d="M9 11h0.01" />
+            <path d="M15 11h0.01" />
+        </Icon>
+    );
+}
+
+function CheckIcon(props: { className?: string }) {
+    return (
+        <Icon title="Valider" {...props}>
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="m8.5 12 2.4 2.4L15.8 9.4" />
+        </Icon>
+    );
+}
+
+function CancelIcon(props: { className?: string }) {
+    return (
+        <Icon title="Refuser" {...props}>
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="m9 9 6 6" />
+            <path d="m15 9-6 6" />
+        </Icon>
+    );
+}
 
 function AnimatedSectionTitle({ text }: { text: string }) {
     const totalChars = Math.max(text.length - 1, 1);
@@ -76,7 +214,7 @@ export default function Home() {
             <header className={styles.header}>
                 <nav className={`${styles.desktopFrame} ${styles.nav}`}>
                     <div className={styles.logoRow}>
-                        <img className={styles.logo} alt="Logo Smart Solutions" src="/images/landing/combi.png" />
+                        <img className={styles.headerLogo} alt="Logo Smart Solutions" src="/images/landing/combi.png" />
                                 </div>
 
                     <div className={styles.navLinks}>
@@ -105,7 +243,7 @@ export default function Home() {
                                     Rejoindre le programme
                                 </a>
                                 <div className={styles.placesChip}>
-                                    <span className="material-symbols-outlined">groups</span>
+                                    <GroupsIcon className={styles.iconGlyph} />
                                     <span>Places limitées (15)</span>
                                 </div>
                             </div>
@@ -126,21 +264,21 @@ export default function Home() {
                 <section className={styles.statsSection}>
                     <div className={`${styles.desktopFrame} ${styles.statsGrid}`}>
                         <article>
-                            <span className="material-symbols-outlined">calendar_today</span>
+                            <CalendarIcon className={styles.iconGlyph} />
                             <div>
                                 <p>Démarrage</p>
                                 <strong>20 mai 2026</strong>
                             </div>
                         </article>
                         <article>
-                            <span className="material-symbols-outlined">timer</span>
+                            <TimerIcon className={styles.iconGlyph} />
                             <div>
                                 <p>Durée</p>
                                 <strong>10 semaines intensives</strong>
                             </div>
                         </article>
                         <article>
-                            <span className="material-symbols-outlined">person_add</span>
+                            <UsersIcon className={styles.iconGlyph} />
                             <div>
                                 <p>Disponibilité</p>
                                 <strong>15 places seulement</strong>
@@ -156,10 +294,10 @@ export default function Home() {
                             <div className={styles.underbar} />
                         </div>
                         <div className={styles.problemGrid}>
-                            <article><span className="material-symbols-outlined">psychology</span><p>J’ai plein d’idées, mais je ne sais pas par où commencer.</p></article>
-                            <article><span className="material-symbols-outlined">payments</span><p>Je crains de lancer un projet qui ne sera pas rentable.</p></article>
-                            <article><span className="material-symbols-outlined">account_balance</span><p>Je ne sais pas comment convaincre une banque ou un partenaire.</p></article>
-                            <article><span className="material-symbols-outlined">architecture</span><p>Mon projet manque de structure et de vision claire.</p></article>
+                            <article><BrainIcon className={styles.iconGlyph} /><p>J’ai plein d’idées, mais je ne sais pas par où commencer.</p></article>
+                            <article><BanknoteIcon className={styles.iconGlyph} /><p>Je crains de lancer un projet qui ne sera pas rentable.</p></article>
+                            <article><BuildingIcon className={styles.iconGlyph} /><p>Je ne sais pas comment convaincre une banque ou un partenaire.</p></article>
+                            <article><ArchitectureIcon className={styles.iconGlyph} /><p>Mon projet manque de structure et de vision claire.</p></article>
                         </div>
                     </div>
                 </section>
@@ -184,15 +322,15 @@ export default function Home() {
                             </p>
                             <div className={styles.promiseChecks}>
                                 <div>
-                                    <span className="material-symbols-outlined">check_circle</span>
+                                    <CheckIcon className={styles.iconGlyph} />
                                     <span>Accompagnement personnalisé</span>
                                 </div>
                                 <div>
-                                    <span className="material-symbols-outlined">check_circle</span>
+                                    <CheckIcon className={styles.iconGlyph} />
                                     <span>Outils de gestion modernes</span>
                                 </div>
                                 <div>
-                                    <span className="material-symbols-outlined">check_circle</span>
+                                    <CheckIcon className={styles.iconGlyph} />
                                     <span>Réseau d&apos;entrepreneurs locaux</span>
                                 </div>
                             </div>
@@ -229,7 +367,7 @@ export default function Home() {
                             <ul className={`${styles.restrictionList} ${styles.restrictionListPrimary}`}>
                                 <li>
                                     <div className={styles.restrictionItemHead}>
-                                        <span className="material-symbols-outlined">cancel</span>
+                                        <CancelIcon className={styles.iconGlyph} />
                                         <h3>Pas pour les solutions miracles</h3>
                                     </div>
                                     <p>Ceux qui cherchent une solution « magique » sans fournir d’effort réel.</p>
@@ -238,7 +376,7 @@ export default function Home() {
                             <ul className={`${styles.restrictionList} ${styles.restrictionListSecondary}`}>
                                 <li>
                                     <div className={styles.restrictionItemHead}>
-                                        <span className="material-symbols-outlined">cancel</span>
+                                        <CancelIcon className={styles.iconGlyph} />
                                         <h3>Pas pour l’immobilisme</h3>
                                     </div>
                                     <p>Ceux qui ne sont pas prêts à se remettre en question et à apprendre.</p>
@@ -284,7 +422,7 @@ export default function Home() {
                             Postuler maintenant
                         </a>
                         <small>
-                            <span className="material-symbols-outlined">check_circle</span>
+                            <CheckIcon className={styles.iconGlyph} />
                             Dépôt de candidature gratuit
                         </small>
                     </div>
