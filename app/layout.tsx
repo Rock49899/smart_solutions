@@ -25,6 +25,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Mon Idée, Mon Entreprise",
   description: "Transforme ton idée en projet structuré et finançable en 10 semaines",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({
