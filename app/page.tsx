@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const FORM_LINK = "https://forms.gle/Q5DDHKxCxrkKZgqa6";
@@ -189,6 +189,8 @@ function AnimatedSectionTitle({ text }: { text: string }) {
 }
 
 export default function Home() {
+    const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+
     useEffect(() => {
         const titles = document.querySelectorAll<HTMLElement>("[data-reveal-title]");
 
@@ -220,9 +222,41 @@ export default function Home() {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const updateHeaderVisibility = () => {
+            const currentScrollY = window.scrollY;
+            const delta = currentScrollY - lastScrollY;
+
+            if (currentScrollY < 80 || delta < -4) {
+                setIsHeaderHidden(false);
+            } else if (delta > 6) {
+                setIsHeaderHidden(true);
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        const onScroll = () => {
+            if (ticking) {
+                return;
+            }
+
+            ticking = true;
+            window.requestAnimationFrame(updateHeaderVisibility);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
     return (
         <div className={styles.page}>
-            <header className={styles.header}>
+            <header className={`${styles.header} ${isHeaderHidden ? styles.headerHidden : ""}`}>
                 <nav className={`${styles.desktopFrame} ${styles.nav}`}>
                     <div className={styles.logoRow}>
                         <img className={styles.headerLogo} alt="Logo Smart Solutions" src="/images/landing/combi.png" />
