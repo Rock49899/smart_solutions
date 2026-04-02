@@ -7,8 +7,6 @@
 :root {
   --background: #fbf9f4;
   --foreground: #1b1c19;
-  --font-headline: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "Manrope", system-ui, sans-serif;
 }
 
 @theme inline {
