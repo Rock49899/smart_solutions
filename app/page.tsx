@@ -259,7 +259,7 @@ export default function Home() {
             <header className={`${styles.header} ${isHeaderHidden ? styles.headerHidden : ""}`}>
                 <nav className={`${styles.desktopFrame} ${styles.nav}`}>
                     <div className={styles.logoRow}>
-                        <img className={styles.headerLogo} alt="Logo Smart Solutions" src="/images/landing/combi.png" />
+                        <img className={styles.headerLogo} alt="Logo Smart Solutions" src="/images/landing/finasmart.png" />
                                 </div>
 
                     <div className={styles.navLinks}>
