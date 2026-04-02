@@ -111,7 +111,7 @@
 }
 
 .main {
-  padding-top: 8.2rem;
+  padding-top: 6.4rem;
 }
 
 .sectionPad {
@@ -1008,7 +1008,7 @@
 
 @media (max-width: 859px) {
   .main {
-    padding-top: 5.5rem;
+    padding-top: 5.1rem;
   }
 }
 
