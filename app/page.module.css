@@ -1,7 +1,7 @@
 .page {
   background: #fbf9f4;
   color: #1b1c19;
-  font-family: var(--font-body);
+  font-family: var(--font-body), "Manrope", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 .headerLogo {
@@ -136,7 +136,7 @@
 
 .heroTitle {
   margin: 0 0 1.6rem;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
   font-size: clamp(2.2rem, 8vw, 4.4rem);
   font-weight: 800;
   line-height: 1.1;
@@ -344,7 +344,7 @@
 
 .promiseContent h2 {
   margin: 0;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
   font-size: clamp(1.8rem, 4vw, 3.2rem);
   line-height: 1.2;
 }
@@ -444,7 +444,7 @@
 .restrictionCard h2,
 .finalCard h2 {
   margin: 0;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
   font-size: clamp(1.8rem, 4vw, 3.2rem);
   line-height: 1.2;
 }
@@ -518,7 +518,7 @@
   font-size: 3.2rem;
   font-weight: 900;
   line-height: 1;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
 }
 
 .moduleGrid {
@@ -586,7 +586,7 @@
 
 .moduleGrid h3 {
   margin: 0.6rem 0 0.4rem;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
   position: relative;
   z-index: 1;
   font-weight: 700;
@@ -662,7 +662,7 @@
 .restrictionItemHead h3 {
   margin: 0;
   font-size: clamp(1rem, 1.8vw, 1.22rem);
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
   letter-spacing: 0.01em;
 }
 
@@ -771,7 +771,7 @@
 }
 
 .aboutImageCard strong {
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
 }
 
 .aboutImageCard div p {
@@ -969,7 +969,7 @@
 
 .footerTop h3 {
   margin: 0 0 0.4rem;
-  font-family: var(--font-headline);
+  font-family: var(--font-headline), "Plus Jakarta Sans", "Manrope", "Inter", system-ui, sans-serif;
 }
 
 .footerTop p {
