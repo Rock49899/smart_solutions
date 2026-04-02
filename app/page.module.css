@@ -18,7 +18,7 @@
 
 @media (min-width: 1200px) {
   .desktopFrame {
-    width: min(1600px, calc(100% - 480px));
+    width: min(1600px, calc(100% - 340px));
   }
 }
 
